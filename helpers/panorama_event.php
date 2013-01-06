@@ -23,13 +23,16 @@ class panorama_event_Core {
 			$panorama = ORM::factory("panorama")->where("id", "=", $item->id)->find();
 			$form->edit_item->checkbox("panorama_panorama")
 				->label(t("Display as a panorama"))
-				->id("g-panorama-panorama");
+				->id("g-panorama-panorama")
+				->checked($panorama->checked);
 			$form->edit_item->input("panorama_HFOV")
 				->label(t("Horizontal FOV"))
-				->id("g-panorama-HFOV");
+				->id("g-panorama-HFOV")
+			    ->value($panorama->HFOV);
 			$form->edit_item->input("panorama_VFOV")
 				->label(t("Vertical FOV"))
-				->id("g-panorama-VFOV");
+				->id("g-panorama-VFOV")
+			    ->value($panorama->VFOV);
 		}
 	}
 
