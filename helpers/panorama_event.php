@@ -20,7 +20,7 @@
 class panorama_event_Core {
 	static function item_edit_form($item, $form) {
 		if ($item->is_photo()) {
-			$panorama = ORM::factory("panorama")->where("id", "=", $item->id)->find();
+			$panorama = ORM::factory("panorama")->where("item_id", "=", $item->id)->find();
 			$form->edit_item->checkbox("panorama_panorama")
 				->label(t("Display as a panorama"))
 				->id("g-panorama-panorama")
@@ -37,9 +37,9 @@ class panorama_event_Core {
 	}
 
 	static function item_edit_form_completed($item, $form) {
-		$panorama = ORM::factory("panorama")->where("id", "=", $item->id)->find();
-		if (!$panorama->loaded()) {
-			$panorama->id = $item->id;
+		$panorama = ORM::factory("panorama")->where("item_id", "=", $item->id)->find();
+		if (!($panorama->loaded())) {
+			$panorama->item_id = $item->id;
 		}
 		$panorama->checked= $form->edit_item->panorama_panorama->checked;
 		$panorama->HFOV= $form->edit_item->panorama_HFOV->value;
