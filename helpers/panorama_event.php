@@ -44,6 +44,16 @@ class panorama_event_Core {
 		$panorama->checked= $form->edit_item->panorama_panorama->checked;
 		$panorama->HFOV= $form->edit_item->panorama_HFOV->value;
 		$panorama->VFOV= $form->edit_item->panorama_VFOV->value;
+		/* If unspecified, we'll assume it's a full 360 panorama. Otherwise, we assume HFOV is accurate. In either case, we calculate the other value from the given one plus the image ratio */
+		if (!($panorama->HFOV) && !($panorama->VFOV)) {
+			$panorama->HFOV = 360;
+			$panorama->VFOV = $panorama->HFOV / $item->width * $item->height;
+		} else if ($panorama->HFOV) {
+			$panorama->VFOV = $panorama->HFOV / $item->width * $item->height;
+		} else {
+			$panorama->HFOV = $panorama->VFOV * $item->width / $item->height;
+		}
+
         $panorama->save();
 	}
 
