@@ -22,10 +22,10 @@ class panorama_installer {
   static function install() {
     $db = Database::instance();
     $db->query("CREATE TABLE IF NOT EXISTS {panoramas} (
-                  `id` int(9) NOT NULL auto_increment,
+                  `id` int(9) NOT NULL,
                   `checked` boolean default 0,
-                  `HFOV` int(9),
-                  `VFOV` int(9),
+                  `HFOV` int(3),
+                  `VFOV` int(3),
                   PRIMARY KEY (`id`))
                 DEFAULT CHARSET=utf8;");
 
@@ -35,10 +35,10 @@ class panorama_installer {
   static function upgrade($version) {
     $db = Database::instance();
     $db->query("CREATE TABLE IF NOT EXISTS {panoramas} (
-                  `id` int(9) NOT NULL auto_increment,
+                  `id` int(9) NOT NULL,
                   `checked` boolean default 0,
-                  `HFOV` int(9),
-                  `VFOV` int(9),
+                  `HFOV` int(3),
+                  `VFOV` int(3),
                   PRIMARY KEY (`id`))
                 DEFAULT CHARSET=utf8;");
 
