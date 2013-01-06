@@ -1,5 +1,5 @@
 name = "Panorama"
-description = "View panoramas with an interactive viewer"
+description = "View panoramas with an interactive viewer (forked from fspp's pan0)"
 version = 1
 author_name ="mikeage"
 author_url = "http://mikeage.net"
