@@ -19,34 +19,34 @@
  */
 
 class panorama_installer {
-	static function install() {
-		$db = Database::instance();
-		$db->query("CREATE TABLE IF NOT EXISTS {panoramas} (
-			`id` int(9) NOT NULL auto_increment,
-			`item_id` int(9) NOT NULL,
-			`checked` boolean default 0,
-			`HFOV` int(3),
-		`VFOV` int(3),
-		PRIMARY KEY (`id`))
-		DEFAULT CHARSET=utf8;");
+  static function install() {
+    $db = Database::instance();
+    $db->query("CREATE TABLE IF NOT EXISTS {panoramas} (
+      `id` int(9) NOT NULL auto_increment,
+      `item_id` int(9) NOT NULL,
+      `checked` boolean default 0,
+      `HFOV` int(3),
+    `VFOV` int(3),
+    PRIMARY KEY (`id`))
+    DEFAULT CHARSET=utf8;");
 
-		module::set_version("panorama", 1);
-	}
+    module::set_version("panorama", 1);
+  }
 
-	static function upgrade($version) {
-		$db = Database::instance();
-		$db->query("CREATE TABLE IF NOT EXISTS {panoramas} (
-			`id` int(9) NOT NULL auto_increment,
-			`item_id` int(9) NOT NULL,
-			`checked` boolean default 0,
-			`HFOV` int(3),
-		`VFOV` int(3),
-		PRIMARY KEY (`id`))
-		DEFAULT CHARSET=utf8;");
+  static function upgrade($version) {
+    $db = Database::instance();
+    $db->query("CREATE TABLE IF NOT EXISTS {panoramas} (
+      `id` int(9) NOT NULL auto_increment,
+      `item_id` int(9) NOT NULL,
+      `checked` boolean default 0,
+      `HFOV` int(3),
+    `VFOV` int(3),
+    PRIMARY KEY (`id`))
+    DEFAULT CHARSET=utf8;");
 
-		module::set_version("panorama", 1);
-	}
+    module::set_version("panorama", 1);
+  }
 
-	static function deactivate() {
-	}
+  static function deactivate() {
+  }
 }
